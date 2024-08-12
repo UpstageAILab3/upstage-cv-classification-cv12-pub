@@ -5,24 +5,7 @@
 | ![김나리](https://avatars.githubusercontent.com/u/137861675?v=4) | ![박범철](https://avatars.githubusercontent.com/u/117797850?v=4) | ![서혜교](https://avatars.githubusercontent.com/u/86095630?v=4) | ![조용중](https://avatars.githubusercontent.com/u/5877567?v=4) | ![최윤설](https://avatars.githubusercontent.com/u/72685362?v=4) |
 | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: |
 |            [김나리](https://github.com/narykkim)             |            [박범철](https://github.com/Bomtori)             |            [서혜교](https://github.com/andWHISKEY)             |            [조용중](https://github.com/paanmego)             |            [최윤설](https://github.com/developzest)             |
-|                            팀장, 담당 역할                             |                            담당 역할                             |                            담당 역할                             |                            담당 역할                             |                            담당 역할                             |
-
-## 0. Overview
-### Environment
-- _Write Development environment_
-
-### Requirements
-- albumentations==1.3.1
-- ipykernel==6.27.1
-- ipython==8.15.0
-- ipywidgets==8.1.1
-- jupyter==1.0.0
-- matplotlib-inline==0.1.6
-- numpy==1.26.0
-- pandas==2.1.4
-- Pillow==9.4.0
-- timm==0.9.12
-
+|                            팀장, 발표, EDA, Pre-processing, Data Augmentation, Modeling                             |                            EDA, Modeling, OCR                             |                 EDA, Pre-processing, Data Argumentation, Modeling                   |                            EDA, Pre-processing, Data Augmentation, Modeling, OCR                             |                            EDA, Pre-processing, Data Augmentation, Modeling                       |
 
 ## 1. Competiton Info
 
@@ -66,12 +49,24 @@
 
 e.g.
 ```
-├── cho(조용중)
+├── BeomCheol/
+│   ├── ReadMe.md
+│   └── efficientnet_code.ipynb
+├── cho (조용중)
+│   ├── README.md
+│   ├── layoutmv3.py
 │   ├── model.ipynb
+│   ├── multimodal_model.ipynb
+│   ├── multimodel_model.py
 │   └── preprocessing.ipynb
-├── developzest(최윤설)
-    ├── developzest_EDA.ipynb
-    └── developzest_baseline_code.ipynb
+├── developzest (최윤설)
+│   ├── developzest_EDA.ipynb
+│   └── developzest_baseline_code.ipynb
+├── nary/
+│   ├── <Nary-related files>
+│   └── <More files or subdirectories>
+└── README.md
+
 ```
 
 ## 3. Data descrption
@@ -94,39 +89,95 @@ e.g.
 
 ### EDA
 
-- _Describe your EDA process and step-by-step conclusion_
+- class 별 학습데이터의 양이 고르지 못함.
+![학습데이터 갯수그래프](./nary/class_num_graph.png)
+- 이미지들의 사이즈 분포 시각화.
+![이미지 사이즈분포](./nary/image_size_graph.png)
+
+<br>
 
 ### Data Processing
 
-- _Describe data processing process (e.g. Data Labeling, Data Cleaning..)_
+- 이미지의 크기를 모델의 최적사이즈에 맞추기좋게 이미지를 가운데에 두고 여백을 주면서 정방형으로 만든 다음 리사이즈.
+  ![이미지 전처리](./nary/image_prepro.png)
+- 이미지의 회전 바로잡기(Denosing)
+  ![Denoising](./nary/denoising.png)
+  ![Denoising](./nary/denosing2.png)
+
+  <br>
 
 ## 4. Modeling
 
 ### Model descrition
 
-- _Write model information and why your select this model_
+- EfficientNet_b4
+- SWIN(Shifted Window)
+  ![대체 텍스트](./cho/teaser.png)
+- ConvNeXt
+  ![ConvNeXt V2 아키텍처](./cho/fcmae_convnextv2.png)
+- OCR
 
 ### Modeling Process
 
-- _Write model train and test process with capture_
+1. Augmentation으로 데이터증강하여 3개의 모델 실험
+2. 하이퍼파라미터 튜닝
+3. 데이터를 오프라인으로 증강시켜 학습. (약 25000개)
+4. 평가데이터 Denoising
+5. 훈련데이터중 일부도 Denosing
+6. Paddle OCR을 이용한 단어 추출 후 단어사전을 만들어 분류 (3, 4, 7, 14 클래스만 적용함) https://api.wandb.ai/links/narykkim/p2l1gyy0
 
 ## 5. Result
 
 ### Leader Board
 
-- _Insert Leader Board Capture_
+- 리더보드 캡처 넣기
 - _Write rank and score_
 
-### Presentation
+---
+<br>
 
-- _Insert your presentaion file(pdf) link_
+### 아쉬웠던 점
+- 김나리
+    - 데이터를 이미지와 문서로 분류해서 다시 분류하는 시스템을 만들고 싶었는 데, 초반에 데이터량이 적다보니 좋은 결과가 나오지 않아 중단했다.
+    - 이미지를 오프라인으로 증강한 후에 시도했으면 좋았을텐데 그러지 못해 아쉽다.
+- 박범철
+    - Confusion Matrix에서 단일 분류모델에서 FN, FP를 가져와 OCR을 도전했지만, 출력 크기 오류 때문에 시간을 많이 잡아먹었던 점.
+- 서혜교
+- 조용중
+    - OCR 부분을 시도했지만 성공적인 결과는 못 얻은점.
+    - model 부분에서 Pretrained=True/False 에 대해서 충분히 테스트를 하지 못한점.
+- 최윤설
+    - 하다보니 이것저것 시도해보고 싶은게 많았는데 시간이 부족해서 아쉬웠음
+    - 다음 대회때부터는 대회 오픈하자마자 이것저것 해보기
 
-## etc
+<br>
 
-### Meeting Log
+### 개선하고 싶은 점
+- 김나리
+    - 수업을 듣고 바로 대회를 하니 적용을 바로 할수 있어 좋다.
+    - 발표준비하면서 모델에 대하여 조금 더 알수 있었다.
+    - Augraphy나 layoutLM 등 조원님들이 공부해서 공유해주신 소중한 샘플코드
+- 박범철
+    - 세 가지 모델을 앙상블 하였을 때 배깅 비율을 다르게 했었으면.
+    - 데이터 증강쪽을 좀 더 전문적으로 실시했다면.
+- 서혜교
+- 조용중
+    - 초기 Preprocessing 을 좀더 다양하게 시도했었으면.
+    - test 데이터를 꼼꼼히 살펴볼것.
+- 최윤설
+    - 다양한 라이브러리를 통해 이미지에 noise를 추가하여 실 데이터와 같이 변형시킬 수 있음
+    - 매 대회를 진행하면서 느끼는 점은 데이터 전처리의 중요성!
 
-- _Insert your meeting log link like Notion or Google Docs_
+<br>
 
-### Reference
-
-- _Insert related reference_
+### 시도해 보고 싶은 점
+- 김나리
+    - Paddle OCR을 시간관계상 대충하고 지나갔는 데, 좀더 체계적으로 만들어보고싶다. OCR 대회를 기대해본다.
+- 박범철
+    - OCR 관련하여 오류를 고치고 계속 시도해봤다면
+- 서혜교
+- 조용중
+    - 최신 모델을 논문 참조하여 로우 레벨로 구현해 보는것.
+    - 오류가 큰 하위 몇개 클래스들에 대해서 계층적으로 가중치를 주고 모델에 적용해 보는것.
+- 최윤설
+    - Pytorch lightning + hydra 로의 변환
