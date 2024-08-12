@@ -408,8 +408,12 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
 ## 5. Result
 
 ### Leader Board
-
-- ![리더보드 이미지](LeaderBoard.PNG)
+- 리더보드[중간 순위]
+  <br>
+![리더보드 이미지](LeaderBoard.PNG)
+- 리더보드[최종 순위]
+  <br>
+![리더보드 이미지](LeaderBoard_final.PNG)
 - 4등,cv12, F1_Score : 0.9530, 제출 횟수 : 85
 
 <br>
