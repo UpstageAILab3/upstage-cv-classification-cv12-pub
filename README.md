@@ -62,6 +62,9 @@ e.g.
 ├── developzest (최윤설)
 │   ├── developzest_EDA.ipynb
 │   └── developzest_baseline_code.ipynb
+├── hyegyo/
+│   ├── README.md
+│   └── train_code.ipynb
 ├── nary/
 │   ├── <Nary-related files>
 │   └── <More files or subdirectories>
@@ -410,7 +413,6 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
 - 4등,cv12, F1_Score : 0.9530, 제출 횟수 : 85
 
 <br>
-
 ### 아쉬웠던 점
 - 김나리
     - 데이터를 이미지와 문서로 분류해서 다시 분류하는 시스템을 만들고 싶었는 데, 초반에 데이터량이 적다보니 좋은 결과가 나오지 않아 중단했다.
@@ -455,4 +457,4 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
     - 최신 모델을 논문 참조하여 로우 레벨로 구현해 보는것.
     - 오류가 큰 하위 몇개 클래스들에 대해서 계층적으로 가중치를 주고 모델에 적용해 보는것.
 - 최윤설
-    - Pytorch lightning + hydra 로의 변환
+    - Pytorch lightning + hydra 로의 변환    
