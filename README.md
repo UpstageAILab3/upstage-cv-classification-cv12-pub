@@ -403,11 +403,16 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
 
 ### Modeling Process
 
-1. Augmentation으로 데이터증강하여 3개의 모델 실험
+1. Augmentation으로 데이터증강하여 3개의 모델 실험 (flip, noise, rotation)
+    -> 과적합의 문제, 0.91이상으로는 잘 오르지 않음
+    -> 두개의 모델들을 앙상블한 결과도 0.92정도
 2. 하이퍼파라미터 튜닝
 3. 데이터를 오프라인으로 증강시켜 학습. (약 25000개)
+    -> swin과 conv의 경우 단일모델에서 0.92 후반, 앙상블후 0.93
 4. 평가데이터 Denoising
-5. 훈련데이터중 일부도 Denosing
+    -> swin 모델을 사용할 경우 0.0011이 오름.
+5. 훈련데이터를 회전 후 일부러 Denosing
+    -> swin conv 앙상블로 그동안보다 가장 높은 점수를 얻음 0.9386
 6. Paddle OCR을 이용한 단어 추출 후 단어사전을 만들어 분류 (3, 4, 7, 14 클래스만 적용함) https://api.wandb.ai/links/narykkim/p2l1gyy0
 
 ## 5. Result
