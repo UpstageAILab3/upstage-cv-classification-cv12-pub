@@ -110,18 +110,34 @@
 - Paddle OCR
 
 ---
-
 ## Modeling Process
 
-1. Augmentation으로 데이터증강하여 3개의 모델 실험
+1. Augmentation으로 데이터증강하여 3개의 모델 실험 (flip, noise, rotation)
+    -> 과적합의 문제, 0.91이상으로는 잘 오르지 않음
+    -> 두개의 모델들을 앙상블한 결과도 0.92정도
 2. 하이퍼파라미터 튜닝
 3. 데이터를 오프라인으로 증강시켜 학습. (약 25000개)
+    -> swin과 conv의 경우 단일모델에서 0.92 후반, 앙상블후 0.93
 4. 평가데이터 Denoising
-5. 훈련데이터중 일부도 Denosing
+    -> swin 모델을 사용할 경우 0.0011이 오름.
+5. 훈련데이터를 회전 후 일부러 Denosing
+    -> swin conv 앙상블로 그동안보다 가장 높은 점수를 얻음 0.9386
 6. Paddle OCR을 이용한 단어 추출 후 단어사전을 만들어 분류 (3, 4, 7, 14 클래스만 적용함) https://api.wandb.ai/links/narykkim/p2l1gyy0
 
 ---
+- train 데이터에서 뽑은 단어들 (3,4,7.14 클래스에서만 뽑음)
+![raw](../nary/raw_data.png)
 
+---
+- 3번 클래스와 7번 클래스
+![bg_left 3_image](../nary/3_image.png)
+![bg right height:350px](../nary/7_image.png)
+
+---
+- 실제 바뀐 데이터들 (총 43개가 수정됨)
+![check](../nary/check_chage.png)
+
+---
 # Result
 
 ### Leader Board
@@ -130,10 +146,7 @@
 - 리더보드[최종 순위]
 ![리더보드 이미지](../LeaderBoard_final.PNG)
 
-<br>
-
 ---
-
 # 후기
 
 <br>
@@ -142,6 +155,7 @@
 
 - 박범철 : Confusion Matrix에서 단일 분류모델에서 FN, FP를 가져와 OCR을 도전했지만, 출력 크기 오류 때문에 시간을 많이 잡아먹었던 점이 아쉽다. OCR 관련하여 오류를 고치고 계속 시도, 세 가지 모델을 앙상블 하였을 때 배깅 비율을 다르게, 데이터 증강쪽을 좀 더 전문적으로 실시를 시도해보고 싶다. 
 
+---
 - 서혜교 : Augraphy 제대로 구현해보기, SwinT 논문부터 제대로 심도깊게 읽고 리뷰하기.
 
 - 조용중 : 다양한 모델을 테스트하고, 실제 CV 프로젝트에서 데이터 증강이나 모델 선택, 모델 성능향상 기법등 다양한 실험을 해 보았던것이 좋은 경험 이었음
