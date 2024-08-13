@@ -426,10 +426,11 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
    <p align="center"><img src="./nary/7_image.png" height="300"></p>
 
    - 단어사전
-   ![dict](./nary/dictinary.png)
+      ![dict](./nary/dictinary.png)
 
    - 실제 바뀐 데이터들 (총 43개가 수정됨)
-   ![check](./nary/check_chage.png)
+  
+      ![check](./nary/check_chage.png)
 
 ## 5. Result
 
