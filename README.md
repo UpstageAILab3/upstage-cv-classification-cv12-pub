@@ -38,8 +38,13 @@
 
 ### Timeline
 
-- ex) 2024.07.30 - Start Date
-- ex) 2024.08.11 - Final submission deadline
+- 2024년 7월 29일 : 대회시작 각자 데이터 EDA
+- 2024년 7월 30일 ~ 8월 2일 : 온라인 강의, 데이터 Augmentation을 이용한 모델링, Baseline code 학습
+- 2024년 8월 5일 : Swin Tranform, Convnext v2 적용
+- 2024년 8월 6일 : OCR, Augrapy 코드 공유 적용
+- 2024년 8월 7일 : 데이터 오프라인 증강, Test data의 Denoising 적용
+- 2024년 8월 8일 : 각자의 모델 Hyper parameter tuning, LM3 적용
+- 2024년 8월 9일 ~ 11일 : 각자의 모델 학습시키면서 리더보드 올리기
 
 
 ## 2. Components
