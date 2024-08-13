@@ -414,6 +414,22 @@ ConvNeXt V2는 CNN과 Transformer의 장점을 결합한 아키텍처로, 다양
 5. 훈련데이터를 회전 후 일부러 Denosing
     -> swin conv 앙상블로 그동안보다 가장 높은 점수를 얻음 0.9386
 6. Paddle OCR을 이용한 단어 추출 후 단어사전을 만들어 분류 (3, 4, 7, 14 클래스만 적용함) https://api.wandb.ai/links/narykkim/p2l1gyy0
+   - train 데이터에서 뽑은 단어들 (3,4,7.14 클래스에서만 뽑음)
+   ![raw](./nary/raw_data.png)
+
+   - 3번 클래스
+     
+   <p align="center"><img src="./nary/3_image.png" height="250"></p>
+
+   - 7번 클래스
+
+   <p align="center"><img src="./nary/7_image.png" height="300"></p>
+
+   - 단어사전
+   ![dict](./nary/dictinary.png)
+
+   - 실제 바뀐 데이터들 (총 43개가 수정됨)
+   ![check](./nary/check_chage.png)
 
 ## 5. Result
 
